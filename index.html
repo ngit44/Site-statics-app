@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <title>Flow Summary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>FlowWorks Site Summary</h1>
+    <form method="post">
+        <label>Site ID: <input type="text" name="site_id" required></label><br>
+        <label>Channel ID: <input type="text" name="channel_id" required></label><br>
+        <button type="submit">Get Summary</button>
+    </form>
+
+    {% if result %}
+        {% if result.error %}
+            <p style="color:red;">{{ result.error }}</p>
+        {% else %}
+            <h3>Results:</h3>
+            <p>Min: {{ result.min }}</p>
+            <p>Max: {{ result.max }}</p>
+            <p>Avg: {{ result.avg }}</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
